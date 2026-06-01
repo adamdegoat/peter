@@ -3,66 +3,264 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Peter — AI Opportunity Research</title>
+<title>Peter — AI Opportunity Research · Singapore</title>
+<meta name="description" content="Peter — an L5 self-improving AI research engine that discovers monetizable AI product opportunities in Singapore and Southeast Asia.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peter — AI Opportunity Engine · Singapore &amp; SE Asia">
+<meta property="og:description" content="An L5 self-improving research system that discovers monetizable AI product ideas in Singapore and Southeast Asia, and learns which idea families produce the best opportunities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: #0d1117; color: #f9fafb; font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; font-size: 14px; line-height: 1.6; }
-  a { color: inherit; text-decoration: none; }
-  .header { background: #0d1117; border-bottom: 1px solid #1f2937; padding: 0 24px; position: sticky; top: 0; z-index: 10; }
-  .header-inner { max-width: 1100px; margin: 0 auto; height: 52px; display: flex; align-items: center; justify-content: space-between; }
-  .logo { font-size: 18px; font-weight: 800; color: #f9fafb; letter-spacing: -.02em; }
-  .logo span { color: #10b981; }
-  .badge { font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: #10b981; background: #10b98122; border: 1px solid #10b98144; border-radius: 4px; padding: 2px 8px; }
-  .main { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
-  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px; }
-  .stat { background: #111827; border: 1px solid #1f2937; border-radius: 10px; padding: 16px 18px; }
-  .stat-num { font-size: 28px; font-weight: 800; color: #f9fafb; }
-  .stat-label { font-size: 11px; color: #6b7280; text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
-  .section { margin-bottom: 32px; }
-  .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #6b7280; margin-bottom: 14px; }
-  .card { background: #111827; border: 1px solid #1f2937; border-radius: 12px; overflow: hidden; }
-  .footer { text-align: center; padding: 32px 24px; color: #374151; font-size: 12px; border-top: 1px solid #1f2937; margin-top: 40px; }
-  @media (max-width: 640px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#070b16;--ink:#e8eef7;--muted:#8a99b5;--dim:#5d6b86;--line:rgba(148,163,184,.13);--accent:#f59e0b;--glow:rgba(245,158,11,.22)}
+html,body{height:100%}
+body{
+  margin:0;background:#070b16;color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  -webkit-font-smoothing:antialiased;min-height:100vh;
+  background-image:
+    radial-gradient(1000px 560px at 16% -10%,rgba(56,189,248,.10),transparent 60%),
+    radial-gradient(900px 520px at 86% 2%,rgba(168,85,247,.11),transparent 62%),
+    radial-gradient(700px 600px at 50% 120%,rgba(34,197,94,.07),transparent 60%),
+    linear-gradient(rgba(148,163,184,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(148,163,184,.035) 1px,transparent 1px);
+  background-size:auto,auto,auto,46px 46px,46px 46px;
+  background-attachment:fixed;
+}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace}
+
+/* ── sticky header ── */
+.header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(7,11,22,.82);
+  border-bottom:1px solid rgba(148,163,184,.10);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:0 28px;
+}
+.header-inner{
+  max-width:1080px;margin:0 auto;height:56px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.wordmark{
+  font-family:'Space Grotesk','Inter',sans-serif;
+  font-size:26px;font-weight:700;color:#fff;letter-spacing:-.5px;
+}
+.wordmark-dot{color:#f59e0b}
+.header-right{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--muted)}
+.pulse-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.7);animation:pulse 1.9s infinite;flex:none}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.5)}70%{box-shadow:0 0 0 9px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0))}}
+.live-label{color:#22c55e;font-weight:800;letter-spacing:1.8px;text-shadow:0 0 10px rgba(34,197,94,.4)}
+
+/* ── layout ── */
+.wrap{max-width:1080px;margin:0 auto;padding:64px 20px 72px}
+
+/* ── hero ── */
+.hero{text-align:center;margin-bottom:0}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;color:#f59e0b;
+  background:rgba(245,158,11,.10);border:1px solid rgba(245,158,11,.25);
+  border-radius:20px;padding:5px 14px;margin-bottom:22px;
+}
+.hero-title{
+  font-family:'Space Grotesk','Inter',sans-serif;
+  font-size:clamp(32px,5vw,52px);font-weight:700;
+  color:#fff;letter-spacing:-1.5px;line-height:1.08;margin-bottom:18px;
+}
+.hero-title span{color:#f59e0b}
+.hero-sub{
+  max-width:640px;margin:0 auto 36px;
+  color:var(--muted);font-size:15px;line-height:1.7;
+}
+.hero-sub b{color:#cdd8ec;font-weight:600}
+
+/* ── how-it-works steps ── */
+.howto{
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;flex-wrap:nowrap;margin:0 auto 56px;max-width:900px;
+}
+.step{
+  display:flex;align-items:center;gap:11px;
+  background:rgba(148,163,184,.05);border:1px solid var(--line);
+  border-radius:12px;padding:12px 16px;
+}
+.step-n{
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,#f59e0b,#d97706);
+  color:#07080f;font-weight:800;font-size:13px;
+  display:grid;place-items:center;flex:none;
+}
+.step-t{font-size:13px;color:var(--muted);line-height:1.3}
+.step-t b{color:#cdd8ec;font-weight:600}
+.step-arrow{color:var(--dim);font-size:16px}
+
+/* ── section headers ── */
+.section-h{
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--muted);font-weight:700;margin-bottom:16px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-h::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(148,163,184,.15),transparent);
+}
+
+/* ── stat cards ── */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:48px}
+.cstat{
+  background:linear-gradient(180deg,rgba(22,32,53,.6),rgba(15,23,42,.55));
+  border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+}
+.cs-l{font-size:10px;letter-spacing:1.2px;color:var(--dim);text-transform:uppercase;font-weight:600;margin-bottom:6px}
+.cs-v{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:700;color:#fff;letter-spacing:-.5px}
+
+/* ── glass panel ── */
+.glass{
+  background:linear-gradient(180deg,rgba(22,32,53,.62),rgba(15,23,42,.55));
+  border:1px solid var(--line);border-radius:16px;
+  padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 12px 36px rgba(0,0,0,.32);margin-bottom:48px;
+  overflow:hidden;
+}
+
+/* ── score methodology ── */
+.method-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.method-item{
+  background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.15);
+  border-radius:10px;padding:14px 14px 12px;
+}
+.method-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#f59e0b;margin-bottom:6px}
+.method-desc{font-size:12px;color:var(--muted);line-height:1.55}
+
+/* ── footer ── */
+.foot{
+  text-align:center;padding-top:48px;
+  color:var(--dim);font-size:11.5px;line-height:1.9;
+  border-top:1px solid rgba(148,163,184,.07);margin-top:12px;
+}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:#f59e0b}
+.sep{color:#2a3550;margin:0 8px}
+
+@media(max-width:820px){
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+  .method-grid{grid-template-columns:repeat(2,1fr)}
+  .howto{flex-direction:column}
+  .step{width:100%}
+  .step-arrow{display:none}
+  .wrap{padding:48px 16px 56px}
+}
+@media(max-width:480px){
+  .stat-row{grid-template-columns:1fr 1fr}
+  .method-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<!-- ── HEADER ── -->
 <header class="header">
   <div class="header-inner">
-    <div class="logo">Peter<span>.</span></div>
-    <div style="display:flex;align-items:center;gap:10px">
-      <span style="font-size:11px;color:#6b7280">Updated daily · 10 AM SGT</span>
-      <span class="badge">Singapore Focus</span>
+    <div class="wordmark">Peter<span class="wordmark-dot">.</span></div>
+    <div class="header-right">
+      <span class="pulse-dot"></span>
+      <span class="live-label">LIVE</span>
+      <span>&middot; Singapore + SE Asia &middot; Daily 10:00 SGT</span>
     </div>
   </div>
 </header>
-<main class="main">
-  <div style="margin-bottom:24px">
-    <h1 style="font-size:22px;font-weight:800;color:#f9fafb;margin-bottom:4px">AI Opportunity Research</h1>
-    <p style="color:#6b7280;font-size:13px">Singapore + SE Asia · L5 self-improving idea engine · Last updated 2026-06-02 00:22 SGT</p>
+
+<div class="wrap">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-eyebrow">&#128161; L5 Self-Improving Research Engine</div>
+    <h1 class="hero-title">AI <span>Opportunity</span> Engine</h1>
+    <p class="hero-sub">An L5 self-improving research system that discovers <b>monetizable AI product ideas</b> in Singapore and Southeast Asia — then <b>learns which idea families produce the best opportunities</b> to steer future research.</p>
   </div>
 
-  <div class="stat-grid">
-    <div class="stat"><div class="stat-num">0</div><div class="stat-label">Ideas Generated</div></div>
-    <div class="stat"><div class="stat-num" style="color:#f59e0b">0</div><div class="stat-label">In Progress</div></div>
-    <div class="stat"><div class="stat-num" style="color:#3b82f6">0</div><div class="stat-label">Built</div></div>
-    <div class="stat"><div class="stat-num" style="color:#8b5cf6">0</div><div class="stat-label">Monetized</div></div>
+  <!-- ── HOW IT WORKS ── -->
+  <div class="howto">
+    <div class="step"><div class="step-n">1</div><div class="step-t"><b>Research Singapore market</b> daily</div></div>
+    <div class="step-arrow">&rarr;</div>
+    <div class="step"><div class="step-n">2</div><div class="step-t"><b>Score &amp; rank</b> each idea across 5 dimensions</div></div>
+    <div class="step-arrow">&rarr;</div>
+    <div class="step"><div class="step-n">3</div><div class="step-t"><b>L5 layer learns</b> which families win</div></div>
   </div>
 
-  
-
-  <div class="section">
-    <div class="section-title">All Ideas</div>
-    <div style="color:#6b7280;text-align:center;padding:40px">No ideas yet — first run pending.</div>
+  <!-- ── STATS ── -->
+  <div class="stat-row">
+    <div class="cstat">
+      <div class="cs-l">Total Ideas</div>
+      <div class="cs-v">0</div>
+    </div>
+    <div class="cstat">
+      <div class="cs-l">In Progress</div>
+      <div class="cs-v" style="color:#f59e0b">0</div>
+    </div>
+    <div class="cstat">
+      <div class="cs-l">Built</div>
+      <div class="cs-v" style="color:#3b82f6">0</div>
+    </div>
+    <div class="cstat">
+      <div class="cs-l">Monetized</div>
+      <div class="cs-v" style="color:#8b5cf6">0</div>
+    </div>
   </div>
 
-  <div class="section">
-    <div class="section-title">L5 Family Intelligence</div>
-    <div class="card" style="padding:4px 0"><div style="color:#6b7280;padding:20px">No family data yet.</div></div>
+  <!-- ── L5 FAMILY INTELLIGENCE ── -->
+  <div class="section-h">&#127981; L5 Family Intelligence &middot; how the research engine learns</div>
+  <div class="glass" style="padding:6px 0 2px">
+    <div style="color:#5d6b86;padding:24px;text-align:center">No family data yet — first run pending.</div>
   </div>
-</main>
-<footer class="footer">
-  Peter · Singapore AI Opportunity Research · Runs daily 10:00 SGT ·
-  <a href="https://github.com/adamdegoat/peter" style="color:#374151">GitHub</a>
-</footer>
+
+  <!-- ── IDEAS ── -->
+  <div class="section-h">&#128161; All Ideas &middot; ranked by score</div>
+  <div style="margin-bottom:48px">
+    <div style="color:#5d6b86;text-align:center;padding:48px;font-size:14px">No ideas yet — first research run pending.</div>
+  </div>
+
+  <!-- ── SCORING METHODOLOGY ── -->
+  <div class="section-h">&#128202; Scoring Methodology &middot; 5 dimensions, 0&ndash;10 each</div>
+  <div class="glass">
+    <div class="method-grid">
+      <div class="method-item">
+        <div class="method-label">Market Demand</div>
+        <div class="method-desc">Size of the addressable market. How many Singapore / SE Asia businesses genuinely need this?</div>
+      </div>
+      <div class="method-item">
+        <div class="method-label">Buildability</div>
+        <div class="method-desc">How feasible is it to build solo or with a small team using current AI APIs and off-the-shelf tools?</div>
+      </div>
+      <div class="method-item">
+        <div class="method-label">Monetization</div>
+        <div class="method-desc">Revenue quality and ceiling. Is there a clear path to recurring SaaS income, one-time, or API usage fees?</div>
+      </div>
+      <div class="method-item">
+        <div class="method-label">Competition Gap</div>
+        <div class="method-desc">How weak is the existing local competition? A high gap means low-cost acquisition and pricing power.</div>
+      </div>
+      <div class="method-item">
+        <div class="method-label">Singapore Fit</div>
+        <div class="method-desc">Alignment with Singapore's regulatory environment, SME landscape, multilingual needs, and government tailwinds (e.g. MAS, IMDA grants).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="foot">
+    Peter &middot; Singapore AI Opportunity Research &middot; Runs daily 10:00 SGT
+    <span class="sep">&middot;</span>
+    <a href="https://github.com/adamdegoat/peter">GitHub</a>
+    <span class="sep">&middot;</span>
+    Last updated 2026-06-02 00:30 SGT
+  </div>
+
+</div>
 </body>
 </html>
